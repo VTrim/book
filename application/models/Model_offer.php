@@ -20,6 +20,7 @@ class Model_offer extends Model {
 		
 		if($captcha != $_SESSION['rand_code']) {
 			
+			unset($_SESSION['rand_code']);
 			$this->captcha_error = 'Невірний код з зображення.';
 			return false;
 			
