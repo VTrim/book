@@ -12,7 +12,7 @@ class Controller_offer extends Controller {
         $model = new Model_offer();
         $view = new View();
 		
-        $view->generate('offer', array('one'=>456456, 'two'=>5635656));
+        $view->generate('offer');
 		
     }
 	
