@@ -72,10 +72,10 @@ class Model_moder extends Model {
 		
 		if($all > 0) {
 			
-			$name = $this->db->real_escape_string($name);
-			$email = $this->db->real_escape_string($email);
-			$site = $this->db->real_escape_string($site);
-			$offer = $this->db->real_escape_string($offer);
+			$name = $this->db->real_escape_string(strip_tags($name));
+			$email = $this->db->real_escape_string(strip_tags($email));
+			$site = $this->db->real_escape_string(strip_tags($site));
+			$offer = $this->db->real_escape_string(strip_tags($offer));
 			
 			$this->db->query("UPDATE offers SET name = '$name', 
 			                                    email = '$email', 
