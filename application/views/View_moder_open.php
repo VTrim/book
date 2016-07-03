@@ -1,6 +1,5 @@
-
 <div class="bs-example">
-	  
+
     <div class="panel panel-default">
       <!-- Default panel contents -->
 
@@ -15,23 +14,27 @@
             <th>Email</th>
             <th>Сайт</th>
 			<th>Текст</th>
+			<th>Дата</th>
 				  <?php if($moder): ?>
 	  			<th>Функції модератора</th>
 	              <?php endif; ?>
           </tr>
         </thead>
-		
+
         <tbody>
-		
-		<?php foreach($offers as $data): ?>
-		
+
+		<?php
+
+foreach($offers as $data): ?>
+
           <tr>
             <td><?= $data->id; ?></td>
             <td><?= htmlspecialchars($data->name); ?></td>
             <td><?= htmlspecialchars($data->email); ?></td>
             <td><?= htmlspecialchars($data->site); ?></td>
 			<td><?= htmlspecialchars($data->offer); ?></td>
-			
+			  <td><?= date('d.m.y h:i:s' , $data->time); ?></td>
+
 			<?php if($moder): ?>
 			<td> Редагування | <button id="<?= $data->id; ?>" onclick="deleteOffer(this.id)"> Видалити </button>
 			<div id="data_edit">
@@ -40,15 +43,20 @@
 			<textarea id="site<?= $data->id; ?>"><?= htmlspecialchars($data->site); ?></textarea> - Сайт<br>
 			<textarea id="offer<?= $data->id; ?>"><?= htmlspecialchars($data->offer); ?></textarea> - Текст<br>
 			<button id="<?= $data->id; ?>" onclick="updateOffer(this.id);">Зберегти</button>
+				<br>
+				<br/>
+				<b>IP користувача:</b>	<?= $data->ip; ?> <br>
+					<b>Браузер / User-Agent:</b>	<?= htmlspecialchars($data->browser); ?>
+				<br>
 			</div>
 			<?php endif; ?>
-			
+
 			</td>
-			
+
           </tr>
-		  
+
 		  <?php endforeach; ?>
-          
+
         </tbody>
       </table>
     </div>
